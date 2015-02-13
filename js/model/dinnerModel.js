@@ -44,10 +44,29 @@ var DinnerModel = function() {
 		var dishList = this.getFullMenu()
 
 		for(key in dishList){
-			ingredientList = ingredientList.concat(dishes[key].ingredients)
+			//ingredientList = ingredientList.concat(dishes[key].ingredients)
+			for(ingredientKey in dishList[key].ingredients){
+				ingredientList.push(dishList[key].ingredients[ingredientKey])
+			}
 		}
 
 		return ingredientList
+	}
+
+	//returns the price for a single dish
+	this.getDishPrice = function(id){
+		var ingredientList = this.getDish(id).ingredients
+
+		var totalPrice = 0
+
+		for(key in ingredientList){
+			totalPrice = totalPrice + ingredientList[key].price
+		}
+
+		totalPrice = totalPrice*numberOfGuests
+		return totalPrice
+
+
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
@@ -88,6 +107,10 @@ var DinnerModel = function() {
 				menu[key] = 0
 			}
 		}
+	}
+
+	this.getDishes = function(){
+		return dishes
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

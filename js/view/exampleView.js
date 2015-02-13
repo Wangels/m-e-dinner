@@ -7,8 +7,8 @@ var ExampleView = function (container, model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 
-	//this.numberOfGuests.html(model.getNumberOfGuests());
-	this.numberOfGuests.html(model.getSelectedDish("starter").name);
+	this.numberOfGuests.html(model.getNumberOfGuests());
+	//this.numberOfGuests.html(model.getSelectedDish("starter").name);
 	//this.numberOfGuests.html((model.getFullMenu())[0].name)
 	//this.numberOfGuests.html((model.getAllIngredients())[3].name)
 

@@ -1,0 +1,47 @@
+#search{
+	height:100px;
+	background-color: green;
+}
+
+#header{
+	height:100px;
+	background-color: blue;
+}
+
+#sideView{
+	background-color: red;
+}
+
+#dishOverview{
+	background-color: orange;
+}
+
+.dish{
+	width: 200px;
+	height: 200px;
+	
+}
+
+.dish img{
+	position: relative;
+	width: 140px;
+	height:140px;
+	
+}
+
+.dish h4{
+	position: absolute;
+	top: 100px;
+	left:20px;
+	width:140px;
+	font-size: 8pt;
+
+}
+
+.dish h4 span{
+	color:white;
+	background: rgb(0,0,0);
+	background: rgba(0,0,0,0.7);
+	padding:5px;
+	width:140px;
+}
