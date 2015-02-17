@@ -3,6 +3,8 @@ var DishView = function (container, model){
 	this.ingredientView = container.find("#ingredientView");
 
 
-	this.dishText.html("mthen");
+	this.dishText.html("Det här är vår dishtext");
+	this.ingredientView.html("Det här är vår ingredientView")
+
 
 }
