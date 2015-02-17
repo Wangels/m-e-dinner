@@ -17,7 +17,7 @@
 		<div class="col-md-12" id="header"><h1>Homelette</h1> From the best chefs in the world directly into your kitchen</div></div>
 
 		<div class="row">
-			<div class="col-md-3" id="sideView">
+			<div class="col-md-3" id="sideView3">
 				<h2>My Dinner</h2>
 				<div>
 					People: <span id="numberOfGuests"></span>
@@ -33,10 +33,22 @@
 			</div> 
 
 			<div class="col-md-9" id="mainView">
-		
-				<div class="row" id="dishView">
-					<div class="col-md-6" id="dishText">Mainmain</div>
-					<div class="col-md-6" id="ingredientView">blublub</div>
+				
+				<div class="row" id="search"> <h3>Select Dish</h3>
+					<div class="col-md-6">
+						 <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Enter key words" id="query" name="query" value="">
+							            <div class="input-group-btn">
+						            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+						            </div>
+						        </div>
+					</div>
+					<div class="col-md-6">
+					</div>
+				</div>
+
+				<div class="row" id="dishOverview">
+					<div class="col-md-12" id="dishGrid">Mainmain</div>
 
 				</div>
 
@@ -57,6 +69,8 @@
 	<script src="js/view/sideViewController.js"></script>
 	<script src="js/view/dishOverview.js"></script>
 	<script src="js/view/dishView.js"></script>
+
+
 
   </body>
 </html>

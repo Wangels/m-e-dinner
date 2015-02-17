@@ -7,7 +7,7 @@ var DishView = function (container, model){
 	dishString = "<h2>" + dish.name + "</h2>" 
 	dishString = dishString + "<img class='dishImg' src='images/" + dish.image + "'/>"
 	dishString = dishString + "<p>Lorem ipsum balla enuhsn euhsne uhsen</p>"
-	dishString = dishString + "<button type='button' class='btn btn-default btn-arrow-left'>back to Select Dish</button>"
+	dishString = dishString + "<a href='index.html'><button type='button' class='btn btn-default btn-arrow-left'>back to Select Dish</button></a>"
 	dishString = dishString + "<h2>Preparation</h2><p>" + dish.description + "</p>"
 
 	this.dishText.html(dishString);
@@ -22,8 +22,8 @@ var DishView = function (container, model){
 
 	}
 
-	ingredientText = ingredientText + "<tr><td/><td/><td>SEK</td><td>" + model.getTotalMenuPrice() + "</td></tr></table>"
-	ingredientText = ingredientText + "<button type='button' class='btn btn-default btn-arrow-left'>Confirm Dish</button>"
+	ingredientText = ingredientText + "<tr><td/><td/><td>SEK</td><td>" + model.getDishPrice(dish.id) + "</td></tr></table>"
+	ingredientText = ingredientText + "<a href='screen3.html'><button type='button' class='btn btn-default btn-arrow-left'>Confirm Dish</button></a>"
 
 	this.ingredientView.html(ingredientText)
 

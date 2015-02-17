@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	
 	var numberOfGuests = 2
-	var menu = {starter:1, main:100, dessert:200}
+	var menu = {starter:0, main:0, dessert:0}
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num
@@ -34,7 +34,9 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
+
 		var dishList = [this.getDish(menu.starter), this.getDish(menu.main), this.getDish(menu.dessert)]
+
 		return dishList
 	}
 
@@ -90,7 +92,7 @@ var DinnerModel = function() {
 		if(dishType == "starter"){
 			menu.starter = id
 		}
-		else if(dishType == "main"){
+		else if(dishType == "main dish"){
 			menu.main = id
 		}
 		else if(dishType == "dessert"){
@@ -137,11 +139,12 @@ var DinnerModel = function() {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  for(key in dishes){
+	  	for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}
 		}
+		return 0
 	}
 
 

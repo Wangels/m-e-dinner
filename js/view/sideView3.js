@@ -1,10 +1,10 @@
-var SideView = function (container, model){
+var SideView3 = function (container, model){
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 	this.dishList = container.find("#dishList");
 
-
+	model.addDishToMenu(100)
 	this.numberOfGuests.html(model.getNumberOfGuests());
 
 
