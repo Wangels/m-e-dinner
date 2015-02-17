@@ -1,19 +1,37 @@
 #search{
 	height:100px;
-	background-color: green;
+	background-color: #FFD119;
+	border-style:solid;
+	border-color:black;
+	border-top:none;
+	border-right:none;
+	border-left:none;
 }
 
 #header{
 	height:100px;
-	background-color: blue;
+	background-color: #DBDBDE;
+	border-style:solid;
+	border-color:black;
+	border-bottom:none;
+
 }
 
 #sideView{
-	background-color: red;
+	border-style:solid;
+	border-color:black;
+	padding:5px;
+	border-right:none;
+	border-bottom:none;
 }
 
 #dishOverview{
-	background-color: orange;
+	margin:10px;
+}
+
+#dishOverview a{
+	text-decoration: none;
+	color:black;
 }
 
 .dish{
@@ -47,5 +65,26 @@
 }
 
 #ingredientView{
-	background: yellow;
+	background: #FFD119;
+	min-height: 300px;
+	border-style:solid;
+	border-color:black;
+	border-top:none;
+	border-right:none;
+	padding:5px;
 }
+
+.dishImg{
+	width: 75%;
+}
+
+#mainView{
+	border-style:solid;
+	border-color:black;
+	border-bottom:none;
+}
+
+.container{
+	width:100%;
+}
+

@@ -16,10 +16,10 @@ var SideView = function (container, model){
 var generateDishList = function(model){
 		dishes = model.getFullMenu()
 
-		var listString = "Dish name cost<ul class ='list-group'>"
+		var listString = "<table class='table'><tr><th>Dish name</th><th>Cost</tr>"
 		for(key in dishes){
-			listString = listString + "<li class='list-group-item'>" + dishes[key].name + " SEK " + model.getDishPrice(dishes[key].id) + "</li> "
+			listString = listString + "<tr><td>" + dishes[key].name + "</td><td>SEK " + model.getDishPrice(dishes[key].id) + "</td></tr> "
 		}
-		listString = listString + "<li class='list-group-item'>Pending SEK 00 </li></ul> SEK " + model.getTotalMenuPrice()  
+		listString = listString + "<tr><td>Pending</td><td> SEK 00</td></tr><tr> <td></td><td>SEK " + model.getTotalMenuPrice() + "</td></tr></table>"
 		return listString
 	}
