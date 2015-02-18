@@ -17,6 +17,10 @@
 #dinnerOverview{
 	border-right:solid;
 	height:100%;
+	padding-top:20px;
+
+	/*border-bottom:solid;
+	border-bottom-width:1px;*/
 }
 
 #backbutton{
@@ -60,15 +64,16 @@ h3{
 }
 
 .dish{
-	width: 200px;
+	width: 140px;
 	height: 200px;
-	
+
 }
 
 .dish img{
 	position: relative;
 	width: 140px;
 	height:140px;
+	border:solid;
 	
 }
 
@@ -116,6 +121,7 @@ h3{
 .btn{
 	background-color:#FF9900;
 	border-color:black;
+
 }
 
 .btn:hover{
@@ -123,3 +129,22 @@ h3{
 	border-color:black;
 }
 
+.dinnerView{
+	text-align: right;
+}
+
+#total{
+	padding-top: 120px;
+	border-left:solid;
+}
+
+
+#printdiv{
+	border-top:solid;
+	padding:10px;
+}
+
+#printbutton{
+	display:block;
+	text-align: center;
+}
