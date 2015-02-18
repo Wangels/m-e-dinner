@@ -23,7 +23,7 @@ var DishView = function (container, model){
 	}
 
 	ingredientText = ingredientText + "<tr><td/><td/><td>SEK</td><td>" + model.getDishPrice(dish.id) + "</td></tr></table>"
-	ingredientText = ingredientText + "<a href='screen3.html'><button type='button' class='btn btn-default btn-arrow-left'>Confirm Dish</button></a>"
+	ingredientText = ingredientText + "<a href='screenAfter.html'><button type='button' class='btn btn-default btn-arrow-left'>Confirm Dish</button></a>"
 
 	this.ingredientView.html(ingredientText)
 
