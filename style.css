@@ -1,4 +1,4 @@
-#search, #overviewTop{
+#search, #overviewTop, #prepTop{
 	height:100px;
 	background-color: #FFBF5E;
 	border-style:solid;
@@ -9,7 +9,7 @@
 	padding-left:10px;
 }
 
-#overviewTop{
+#overviewTop, #prepTop{
 	border-top:solid;
 	border-right:solid;
 }

@@ -17,7 +17,7 @@
 		<div class="col-md-12" id="header"><h1>Homelette</h1> From the best chefs in the world directly into your kitchen</div></div>
 
 		<div class="row">
-			<div class="col-md-3" id="sideView3">
+			<div class="col-md-3" id="sideView">
 				<h2>My Dinner</h2>
 				<div>
 					People: <span id="numberOfGuests"></span>
@@ -72,13 +72,19 @@
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
+
 	<script src="js/view/sideView.js"></script>
 	<script src="js/view/sideView3.js"></script>
-	<script src="js/view/sideViewController.js"></script>
+	<!--<script src="js/view/sideViewController.js"></script>-->
 	<script src="js/view/dishOverview.js"></script>
 	<script src="js/view/dishView.js"></script>
 	<script src="js/view/dinnerOverview.js"></script>
-	<script scr="js/view/dinnerprepview.js"></script>
+	<script scr="js/view/dinnerPrepview.js"></script>
+
+	<script type="text/javascript">
+		model.addDishToMenu(100) //doesn't work :(
+	</script>
+
 
 
   </body>

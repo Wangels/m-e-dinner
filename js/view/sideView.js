@@ -4,9 +4,7 @@ var SideView = function (container, model){
 	this.minusButton = container.find("#minusGuest");
 	this.dishList = container.find("#dishList");
 
-
 	this.numberOfGuests.html(model.getNumberOfGuests());
-
 
 	this.dishList.html(generateDishList(model));
 

@@ -5,6 +5,7 @@ var DinnerOverview = function(container, model){
 	this.overviewTop.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
 
 	model.addDishToMenu(1)
+	model.addDishToMenu(100)
 	model.addDishToMenu(200)
 
 	var menu = model.getFullMenu()
