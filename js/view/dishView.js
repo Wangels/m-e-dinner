@@ -7,7 +7,7 @@ var DishView = function (container, model){
 	dishString = "<h2>" + dish.name + "</h2>" 
 	dishString = dishString + "<img class='dishImg' src='images/" + dish.image + "'/>"
 	dishString = dishString + "<p>Lorem ipsum balla enuhsn euhsne uhsen</p>"
-	dishString = dishString + "<a href='index.html'><button type='button' class='btn btn-default btn-arrow-left'>back to Select Dish</button></a>"
+	dishString = dishString + "<a href='selectDish.html'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span>   back to Select Dish</button></a>"
 	dishString = dishString + "<h2>Preparation</h2><p>" + dish.description + "</p>"
 
 	this.dishText.html(dishString);

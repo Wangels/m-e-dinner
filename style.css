@@ -1,6 +1,6 @@
-#search{
+#search, #overviewTop{
 	height:100px;
-	background-color: #FFD119;
+	background-color: #FFBF5E;
 	border-style:solid;
 	border-color:black;
 	border-top:none;
@@ -9,6 +9,27 @@
 	padding-left:10px;
 }
 
+#overviewTop{
+	border-top:solid;
+	border-right:solid;
+}
+
+#dinnerOverview{
+	border-right:solid;
+	height:100%;
+}
+
+#backbutton{
+	position:absolute;
+	right:10px;
+}
+.form-control{
+	border-color:black;
+}
+
+h3{
+	margin-top:10px;
+}
 
 #header{
 	height:100px;
@@ -69,7 +90,7 @@
 }
 
 #ingredientView{
-	background: #FFD119;
+	background: #FFBF5E;
 	min-height: 300px;
 	border-style:solid;
 	border-color:black;
@@ -90,5 +111,15 @@
 
 .container{
 	width:100%;
+}
+
+.btn{
+	background-color:#FF9900;
+	border-color:black;
+}
+
+.btn:hover{
+	background-color: #FFBF5E;
+	border-color:black;
 }
 
