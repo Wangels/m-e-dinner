@@ -2,16 +2,12 @@ var DinnerOverview = function(container, model){
 	this.overviewTop = container.find("#overviewTop");
 	this.dinnerOverview = container.find("#dinnerOverview");
 
-	this.overviewTop.html("<h3>My Dinner: " + model.getNumberOfGuests() + "</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
+	this.overviewTop.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
 
 	model.addDishToMenu(1)
 	model.addDishToMenu(200)
 
-	this.dinnerOverview.html("methuseese")
-
 	var menu = model.getFullMenu()
-
-	this.dinnerOverview.html("menu")
 
 	var dinnerOverviewText = "<div class='row'><div class='col-md-2'></div>"
 	dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[0], model) + getDishDiv(menu[1], model) + getDishDiv(menu[2], model)
