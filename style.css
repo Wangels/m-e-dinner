@@ -1,4 +1,9 @@
-#search, #overviewTop, #prepTop{
+#home{
+	background-image: url('images/background.jpg');
+	background-size:cover;
+}
+
+#search, #top{
 	height:100px;
 	background-color: #FFBF5E;
 	border-style:solid;
@@ -9,7 +14,7 @@
 	padding-left:10px;
 }
 
-#overviewTop, #prepTop{
+#top{
 	border-top:solid;
 	border-right:solid;
 }
@@ -33,9 +38,19 @@
 
 h3{
 	margin-top:10px;
+	font-weight:bold;
 }
 
-#header{
+h4{
+	font-size:15pt;
+	font-weight:bold;
+}
+
+h5{
+	font-weight: bold;
+}
+
+#header, #headerHome{
 	height:100px;
 	background-color: #DBDBDE;
 	border-style:solid;
@@ -45,7 +60,23 @@ h3{
 
 }
 
-#sideView, #sideView3{
+#headerHome{
+	background-color:#FFBF5E;
+	background:rgba(255,191,94, 0.8);
+	border-bottom:solid;
+}
+
+#intro{
+	width:50%;
+	background-color:white;
+	background:rgba(255,255,255, 0.8);
+	margin-top:100px;
+	padding: 10px;
+	border-radius:10px;
+}
+
+
+#sideView{
 	border-style:solid;
 	border-color:black;
 	padding:5px;
@@ -147,4 +178,16 @@ h3{
 #printbutton{
 	display:block;
 	text-align: center;
+}
+
+.dishDescription img{
+	float:left;
+	border:solid;
+	margin-right:10px;
+}
+
+#dishPrep{
+	margin-bottom:10px;
+	margin-top:10px;
+	padding:20px;
 }

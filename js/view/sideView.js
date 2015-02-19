@@ -25,3 +25,4 @@ var generateDishList = function(model){
 		listString = listString + "<tr><td>Pending</td><td> SEK 00</td></tr><tr> <td></td><td>SEK " + model.getTotalMenuPrice() + "</td></tr></table>"
 		return listString
 	}
+
