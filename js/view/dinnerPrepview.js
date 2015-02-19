@@ -1,7 +1,7 @@
 var DinnerPrepview = function(container, model){
 	this.prepTop = container.find("#prepTop");
 	this.prepOverview = container.find("#prepOverview");
-
+	this.prepTop.html("hej")
 	//maybe we should make top seperate view?? we use it on both dinner_overview and dinner_prepview
 	this.prepTop.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
 	this.prepOverview.html("the :D")
