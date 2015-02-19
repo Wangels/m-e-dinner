@@ -1,4 +1,4 @@
-var DinnerPrepview = function(container, model){
+var DinnerPrepview = function(container, model)
 	this.prepTop = container.find("#prepTop");
 	this.prepOverview = container.find("#prepOverview");
 	this.prepTop.html("hej")
