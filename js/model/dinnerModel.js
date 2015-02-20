@@ -1,14 +1,30 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
-	
 	var numberOfGuests = 2
 	var menu = {starter:0, main:0, dessert:0}
+	this._observers = []
+
+	this.addObserver = function(observer){
+		//adds new observer to the observer array
+		//console.log("in addObserver, observer=", observer)
+		this._observers.push(observer)
+		//console.log(this._observers)
+	}
+
+
+	this.notifyObservers = function(obj){
+		//calls update method on all observers in the observer array
+		console.log("in notifyObserver, observers=" + this._observers)
+		for(observerKey in this._observers){
+			this._observers[observerKey].update(obj)
+			//console.log("updating observer " + observerKey)
+		}
+	}
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num
+		this.notifyObservers()
 	}
 
 	// should return 
@@ -99,6 +115,7 @@ var DinnerModel = function() {
 			menu.dessert = id
 		}
 
+		this.notifyObservers()
 
 	}
 
@@ -109,6 +126,8 @@ var DinnerModel = function() {
 				menu[key] = 0
 			}
 		}
+
+		this.notifyObservers()
 	}
 
 	this.getDishes = function(){

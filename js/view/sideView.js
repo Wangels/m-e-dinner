@@ -1,12 +1,26 @@
 var SideView = function (container, model){
-	this.numberOfGuests = container.find("#numberOfGuests");
-	this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
-	this.dishList = container.find("#dishList");
+	model.addObserver(this)
 
-	this.numberOfGuests.html(model.getNumberOfGuests());
+	var numberOfGuests = this.numberOfGuests = container.find("#numberOfGuests");
+	var plusButton = this.plusButton = container.find("#plusGuest");
+	var minusButton = this.minusButton = container.find("#minusGuest");
+	var dishList = this.dishList = container.find("#dishList");
 
-	this.dishList.html(generateDishList(model));
+	var loadSideView = function(){
+
+		numberOfGuests.html(model.getNumberOfGuests());
+
+		dishList.html(generateDishList(model));
+
+	}
+
+	this.update = function(obj){
+		console.log("updating")
+		loadSideView()
+
+	}
+
+	loadSideView()
 
 }
 

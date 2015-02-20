@@ -1,25 +1,33 @@
 var DinnerOverview = function(container, model){
-	//this.overviewTop = container.find("#overviewTop");
-	this.dinnerOverview = container.find("#dinnerOverview");
+	model.addObserver(this)
+	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverview");
 
-	//this.overviewTop.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
-
-	model.addDishToMenu(1)
+	//for when we have no controller, to have something to show
+	/*model.addDishToMenu(1)
 	model.addDishToMenu(100)
-	model.addDishToMenu(200)
+	model.addDishToMenu(200)*/
 
-	var menu = model.getFullMenu()
+	var loadDinnerOverview = function(obj){
+		
+		var menu = model.getFullMenu()
 
-	var dinnerOverviewText = "<div class='row'><div class='col-md-2'></div>"
-	dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[0], model) + getDishDiv(menu[1], model) + getDishDiv(menu[2], model)
+		var dinnerOverviewText = "<div class='row'><div class='col-md-2'></div>"
+		dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[0], model) + getDishDiv(menu[1], model) + getDishDiv(menu[2], model)
 
 
-	dinnerOverviewText = dinnerOverviewText + "<div class='col-md-2' id='total'>Total:<br/>" + model.getTotalMenuPrice() + " SEK</div></div>"
+		dinnerOverviewText = dinnerOverviewText + "<div class='col-md-2' id='total'>Total:<br/>" + model.getTotalMenuPrice() + " SEK</div></div>"
 
-	dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><a href='dinner_preparation.html'><button type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></a></div><div class='col-md-2' id=printdiv></div>"
+		dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><a href='dinner_preparation.html'><button type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></a></div><div class='col-md-2' id=printdiv></div>"
 
-	this.dinnerOverview.html(dinnerOverviewText)
+		dinnerOverview.html(dinnerOverviewText)
 
+	}
+
+	this.update = function(obj){
+		loadDinnerOverview()
+	}
+
+	loadDinnerOverview()
 	
 }
 
@@ -35,23 +43,41 @@ var getDishDiv = function(dish, model){
 
 var TopView = function(container, model){
 
-	container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
-	//console.log("muu")
+	model.addObserver(this)
+
+	var loadTop = function(obj){
+
+		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
+	}
+
+	this.update = function(obj){
+		loadTop()
+	}
+
+	loadTop()
 }
 
 var DinnerPrepview = function(container, model){
-	//this.prepOverview = container.find("#prepOverview");
+	model.addObserver(this)
 
-	var menu = model.getFullMenu()
+	var loadDinnerPrepview = function(obj){
 
-	var dinnerText = ""
+		var menu = model.getFullMenu()
 
-	for(dinnerKey in menu){
-		dinnerText = dinnerText + getPrepDishDiv(menu[dinnerKey], model)
+		var dinnerText = ""
+
+		for(dinnerKey in menu){
+			dinnerText = dinnerText + getPrepDishDiv(menu[dinnerKey], model)
+		}
+
+		container.html(dinnerText)
 	}
 
-	container.html(dinnerText)
-	
+	this.update = function(obj){
+		loadDinnerPrepview()
+	}
+
+	loadDinnerPrepview()
 }
 
 var getPrepDishDiv = function(dish, model){

@@ -3,6 +3,10 @@
 	background-size:cover;
 }
 
+#makeDinnerContainer{
+	background-color:white;
+}
+
 #search, #top{
 	height:100px;
 	background-color: #FFBF5E;

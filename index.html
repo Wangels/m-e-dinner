@@ -12,7 +12,7 @@
 
   </head>
   <body id="home">
-	<div class="container">
+	<div class="container" id="homeContainer">
 		<div class="row">
 		<div class="col-md-12" id="headerHome"><h1>Homelette</h1> From the best chefs in the world directly into your kitchen</div></div>
 
@@ -22,8 +22,72 @@
 			<p>Lorem impsum dolor sit amet, consecteur adipsicing elit, sed do eisudmod tempor indcidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exertitation ullamco labris nisi ut aliquip.</p>
 
 			<p>Start quickly</p>
-			<a href="selectDish.html"><button id="confirm" class="btn btn-default btn-lg">Create new dinner</button></a>
+			<button id="createDinnerButton" class="btn btn-default btn-lg">Create new dinner</button>
 
+		</div>
+	</div>
+
+	<div class="container" id="makeDinnerContainer">
+		<div class="row">
+		<div class="col-md-12" id="header"><h1>Homelette</h1> From the best chefs in the world directly into your kitchen</div></div>
+
+		<div class="row">
+			<div class="col-md-3" id="sideView">
+				<h2>My Dinner</h2>
+				<div>
+					People: <span id="numberOfGuests"></span>
+	          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+					<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+				</div>
+
+
+				<div id="dishList">
+
+				</div>
+				<button id="confirm" class="btn btn-default btn-lg"> Confirm dinner</button>
+			</div> 
+
+			<div class="col-md-9" id="mainView">
+				<div id="selectDish">
+					<div class="row" id="search"> <h3>Select Dish</h3>
+						<div class="col-md-6">
+							 <div class="input-group">
+							    <input type="text" class="form-control" placeholder="Enter key words" id="query" name="query" value="">
+								<div class="input-group-btn">
+							    	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+							    </div>
+							</div>
+						</div>
+						<div class="col-md-6">
+
+								<div class="form-group">
+									
+									<select class="form-control" id="sel1">
+										<option value="Starter">Starter</option>
+										<option value="Main">Main</option>
+										<option value="Dessert">Dessert</option>
+									</select>
+								</div>
+						</div>
+					</div>
+
+					<div class="row" id="dishOverview">
+						<div class="col-md-12" id="dishGrid">Mainmain</div>
+					</div>
+
+				</div>
+
+				<div id="dishBigView">
+						<div class="row" id="dishView" rel='1'>
+							<div class="col-md-6" id="dishText">Mainmain</div>
+							<div class="col-md-6" id="ingredientView">blublub</div>
+
+						</div>
+
+				</div>
+			
+
+			</div>
 		</div>
 	</div>
     <!-- jQuery -->
@@ -33,11 +97,15 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
+	<script src="js/view/mainView.js"></script>
+	<script src="js/view/mainViewController.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/sideView.js"></script>
-	<!--<script src="js/view/sideViewController.js"></script>-->
+	<script src="js/view/sideViewController.js"></script>
 	<script src="js/view/dishOverview.js"></script>
+	<script src="js/view/dishOverviewController.js"></script>
 	<script src="js/view/dishView.js"></script>
+	<script src="js/view/dishViewController.js"></script>
 	<script scr="js/view/topView.js"></script>
 	<script src="js/view/dinnerOverview.js"></script>
 
