@@ -1,6 +1,7 @@
-var DishViewController = function(view, model){
+var DishViewController = function(view, model, mainController){
 	console.log("DishViewController")
 
+	console.log(view.ingredientView.find("#confirmDish"))
 	view.ingredientView.find("#confirmDish").click(function(){
 		console.log("clicked confirmDish")
 		model.addDishToMenu(view.dish.id);
@@ -8,7 +9,7 @@ var DishViewController = function(view, model){
 
 	view.dishText.find("#dishBack").click(function(){
 		console.log("clicked dishBack");
-		$("#dishBigView").hide()
-		$("#selectDish").show()
+		mainController.showSelectDish()
+		
 	})
 }

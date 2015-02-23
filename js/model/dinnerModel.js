@@ -7,7 +7,7 @@ var DinnerModel = function() {
 
 	this.addObserver = function(observer){
 		//adds new observer to the observer array
-		//console.log("in addObserver, observer=", observer)
+		console.log("in addObserver, observer=", observer)
 		this._observers.push(observer)
 		//console.log(this._observers)
 	}
@@ -15,7 +15,7 @@ var DinnerModel = function() {
 
 	this.notifyObservers = function(obj){
 		//calls update method on all observers in the observer array
-		console.log("in notifyObserver, observers=" + this._observers)
+		console.log("in notifyObserver, " + obj)
 		for(observerKey in this._observers){
 			this._observers[observerKey].update(obj)
 			//console.log("updating observer " + observerKey)
@@ -24,7 +24,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num
-		this.notifyObservers()
+		this.notifyObservers("setNumberOfGuests")
 	}
 
 	// should return 
@@ -115,7 +115,7 @@ var DinnerModel = function() {
 			menu.dessert = id
 		}
 
-		this.notifyObservers()
+		this.notifyObservers("addDishToMenu")
 
 	}
 
@@ -127,7 +127,7 @@ var DinnerModel = function() {
 			}
 		}
 
-		this.notifyObservers()
+		this.notifyObservers("removeDishFromMenu")
 	}
 
 	this.getDishes = function(){

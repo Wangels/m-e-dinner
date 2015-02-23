@@ -9,6 +9,7 @@ var DishView = function (container, model){
 	var load = function(){
 
 		dish = this.dish = model.getDish($("#dishView").attr('rel'))
+		console.log(dish.id)
 
 		dishString = "<h2>" + dish.name + "</h2>" 
 		dishString = dishString + "<img class='dishImg' src='images/" + dish.image + "'/>"

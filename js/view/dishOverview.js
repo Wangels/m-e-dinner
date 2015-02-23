@@ -1,6 +1,6 @@
 var DishOverview = function(container, model){
 
-	model.addObserver(this)
+	//model.addObserver(this)
 
 	var dishGrid = this.dishGrid = container.find("#dishGrid");
 

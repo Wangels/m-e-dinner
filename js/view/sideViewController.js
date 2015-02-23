@@ -10,4 +10,8 @@ var SideViewController = function(view, model ) {
 		model.setNumberOfGuests(model.getNumberOfGuests() - 1);
 		console.log("-")
 	});
+
+	view.confirmButton.click(function(){
+		console.log("clicked confirmButton")
+	})
 }

@@ -2,11 +2,6 @@ var DinnerOverview = function(container, model){
 	model.addObserver(this)
 	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverview");
 
-	//for when we have no controller, to have something to show
-	/*model.addDishToMenu(1)
-	model.addDishToMenu(100)
-	model.addDishToMenu(200)*/
-
 	var loadDinnerOverview = function(obj){
 		
 		var menu = model.getFullMenu()
