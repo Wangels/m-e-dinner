@@ -5,6 +5,8 @@
 
 #makeDinnerContainer{
 	background-color:white;
+	min-height:100vh;
+	border-style:black;
 }
 
 #search, #top{
@@ -24,9 +26,10 @@
 }
 
 #dinnerOverviewDiv{
-	border-right:solid;
+	/*border-right:solid;*/
 	height:100%;
 	padding-top:20px;
+	min-height: 100%;
 
 	/*border-bottom:solid;
 	border-bottom-width:1px;*/
@@ -87,6 +90,7 @@ h5{
 	border-right:none;
 	border-bottom:none;
 	border-left:none;
+	height:100%;
 }
 
 #dishOverview{
@@ -147,6 +151,8 @@ h5{
 	border-style:solid;
 	border-color:black;
 	border-bottom:none;
+	min-height:100%;
+
 }
 
 .container{
