@@ -3,7 +3,9 @@ var DinnerModel = function() {
  
 	var numberOfGuests = 2
 	var menu = {starter:0, main:0, dessert:0}
+	var pendingPrice = 0
 	this._observers = []
+
 
 	this.addObserver = function(observer){
 		//adds new observer to the observer array
@@ -27,11 +29,29 @@ var DinnerModel = function() {
 		this.notifyObservers("setNumberOfGuests")
 	}
 
+
 	// should return 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests
 	}
 
+	this.setPending = function(id){
+		console.log("Setting pendingPrice, id=" + id)
+		if(id === 0){
+			pendingPrice = 0
+		}
+		else{
+			console.log("really setting pending price")
+			pendingPrice = this.getDishPrice(id)
+		}
+		
+		console.log("Pending price now=", pendingPrice)
+		this.notifyObservers()
+	}
+
+	this.getPending = function(){
+		return pendingPrice
+	}
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(dishType) {
 
@@ -96,7 +116,7 @@ var DinnerModel = function() {
 			totalPrice = totalPrice + ingredientList[key].price
 		}
 
-		totalPrice = totalPrice*numberOfGuests
+		totalPrice = totalPrice*numberOfGuests + pendingPrice
 		return totalPrice
 	}
 
@@ -363,7 +383,7 @@ var DinnerModel = function() {
 			'price':4
 			}]
 		},{
-		'id':102,
+		'id':103,
 		'name':'MD 4',
 		'type':'main dish',
 		'image':'meatballs.jpg',

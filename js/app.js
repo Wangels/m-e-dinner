@@ -1,6 +1,8 @@
 $(function() {
 	//We instantiate our model
 	model = new DinnerModel();
+
+	$("#makeDinnerContainer").hide()
 	
 	//var mainView = new MainView($("#home"), model);
 	var mainController = new MainController();
@@ -30,23 +32,23 @@ $(function() {
 
 	var dinnerPrepview = new DinnerPrepview($("#prepOverview"), model);
 	
-	$("#makeDinnerContainer").hide()
+	
 });
 
 var MainController = function(){
 
 	this.showSelectDish = function(){
 		//shows searchView - the view with all the dishes
-		$("#makeDinnerContainer").show();
-		$("#bigContainer").show()
-		$("#selectDish").show()
 
 		$("#dishBigView").hide();
 
 		$("#dinnerOverview").hide()
 		$("#prepOverviewContainer").hide()
-		
 
+		$("#makeDinnerContainer").show();
+		$("#bigContainer").show()
+		$("#selectDish").show()
+		
 	}
 
 	this.showSideview = function(){
@@ -54,9 +56,12 @@ var MainController = function(){
 
 	}
 
-	this.showDishview = function(){
+	this.showDishview = function(id){
 		//shows view of one dish
-		console.log("in showDishview()")
+		console.log("in showDishview(), id=" + id)
+		model.setPending(id)
+
+		//in order to get the proper dish in the view we have to update it. 
 		model.notifyObservers()
 		$("#dishBigView").show();
 		$("#selectDish").hide()

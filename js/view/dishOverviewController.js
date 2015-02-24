@@ -3,7 +3,7 @@ var DishOverviewController = function(view, model, mainController){
 		console.log("clicked dish" + this.id)
 
 		$("#dishView").attr('rel', this.id)
-		mainController.showDishview()
+		mainController.showDishview(this.id)
 
 	})
 }

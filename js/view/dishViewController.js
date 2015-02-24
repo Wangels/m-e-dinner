@@ -5,6 +5,7 @@ var DishViewController = function(view, model, mainController){
 	//view.ingredientView.find("#confirmDish").click(function(){
 		console.log("clicked confirmDish dishId =" + view.dishId)
 		model.addDishToMenu(view.dishId);
+		model.setPending(0)
 	}
 
 	//view.dishText.find("#dishBack").click(function(){
@@ -13,6 +14,7 @@ var DishViewController = function(view, model, mainController){
 	dishBack = function(){
 		console.log("clicked dishBack");
 		mainController.showSelectDish()
+		model.setPending(0)
 		
 	}
 }
