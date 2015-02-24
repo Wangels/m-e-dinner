@@ -7,3 +7,19 @@ var DishOverviewController = function(view, model, mainController){
 
 	})
 }
+
+
+var SearchController = function(model, mainController){
+
+	starterFunc = function(){
+		console.log("Starter activated")
+	}
+
+	mainFunc = function(){
+		console.log("Main dish activated")
+	}
+
+	dessertFunc = function(){
+		console.log("Dessert activated")
+	}
+}

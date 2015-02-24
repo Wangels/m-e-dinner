@@ -60,13 +60,16 @@
 						</div>
 						<div class="col-md-6">
 
-								<div class="form-group">
+								<div class="btn-group">
 									
-									<select class="form-control" id="sel1">
-										<option value="Starter">Starter</option>
-										<option value="Main">Main</option>
-										<option value="Dessert">Dessert</option>
-									</select>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+										Filter <span class="caret"></span>
+									</button>
+ 									<ul class="dropdown-menu" role="menu">
+    									<li><a href="#Starter" onclick="starterFunc()">Starter</a></li>
+   	 									<li><a href="#Main" onclick="mainFunc()">Main Dish</a></li>
+    									<li><a href="#Dessert" onclick="dessertFunc()">Dessert</a></li>
+    								</ul>
 								</div>
 						</div>
 					</div>

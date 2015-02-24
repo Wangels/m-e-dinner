@@ -31,6 +31,7 @@ $(function() {
 	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, mainController);
 
 	var dinnerPrepview = new DinnerPrepview($("#prepOverview"), model);
+	var searchController = new SearchController(model, mainController);
 	
 	
 });
