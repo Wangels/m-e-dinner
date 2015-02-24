@@ -11,6 +11,10 @@ var DishOverviewController = function(view, model, mainController){
 
 var SearchController = function(model, mainController){
 
+	allFunc = function(){
+		console.log("back to All")
+	}
+
 	starterFunc = function(){
 		console.log("Starter activated")
 	}
