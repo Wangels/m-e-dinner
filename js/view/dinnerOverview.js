@@ -3,8 +3,7 @@ var DinnerOverview = function(container, model){
 	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverviewDiv");
 
 	var loadDinnerOverview = function(obj){
-		console.log("loading dinnerOverview")
-		
+	
 		var menu = model.getFullMenu()
 
 		var dinnerOverviewText = "<div class='row'><div class='col-md-2'></div>"
@@ -28,7 +27,7 @@ var DinnerOverview = function(container, model){
 	}
 
 	this.update = function(obj){
-		console.log("updating dinnerOverview")
+		
 		loadDinnerOverview()
 	}
 

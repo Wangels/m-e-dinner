@@ -1,9 +1,7 @@
 var DishViewController = function(view, model, mainController){
-	console.log("DishViewController")
 
 	confirmDish = function(){
 	//view.ingredientView.find("#confirmDish").click(function(){
-		console.log("clicked confirmDish dishId =" + view.dishId)
 		model.addDishToMenu(view.dishId);
 		model.setPending(0)
 	}
@@ -12,7 +10,6 @@ var DishViewController = function(view, model, mainController){
 
 	//is there a way to make this not global???
 	dishBack = function(){
-		console.log("clicked dishBack");
 		mainController.showSelectDish()
 		model.setPending(0)
 		

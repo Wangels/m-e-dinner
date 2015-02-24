@@ -8,7 +8,6 @@ $(function() {
 	var mainController = new MainController();
 
 	$("#createDinnerButton").click(function(){
-		console.log("clicked createDinnerButton, calling showSearch()")
 		$("#homeContainer").hide();
 		mainController.showSelectDish();
 	});
@@ -59,7 +58,7 @@ var MainController = function(){
 
 	this.showDishview = function(id){
 		//shows view of one dish
-		console.log("in showDishview(), id=" + id)
+		
 		model.setPending(id)
 
 		//in order to get the proper dish in the view we have to update it. 
@@ -70,7 +69,7 @@ var MainController = function(){
 
 	this.showDinnerOverview = function(){
 		//shows the dinnerOverview (after confirm dish)
-		console.log("showing dinnerOverview")
+		
 		$("#bigContainer").hide()
 		//$("#dishBigView").hide();
 		$("#dinnerOverview").show()
@@ -82,7 +81,6 @@ var MainController = function(){
 	this.showDinnerPrepview = function(){
 		//shows the dinner preview (get to from print button)
 
-		console.log("show dinnerPrepview")
 		$("#dinnerOverviewDiv").hide()
 		$("#prepOverviewContainer").show()
 	}

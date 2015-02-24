@@ -9,7 +9,6 @@ var DinnerModel = function() {
 
 	this.addObserver = function(observer){
 		//adds new observer to the observer array
-		console.log("in addObserver, observer=", observer)
 		this._observers.push(observer)
 		//console.log(this._observers)
 	}
@@ -17,10 +16,9 @@ var DinnerModel = function() {
 
 	this.notifyObservers = function(obj){
 		//calls update method on all observers in the observer array
-		console.log("in notifyObserver, " + obj)
 		for(observerKey in this._observers){
 			this._observers[observerKey].update(obj)
-			//console.log("updating observer " + observerKey)
+			
 		}
 	}
 
@@ -36,16 +34,14 @@ var DinnerModel = function() {
 	}
 
 	this.setPending = function(id){
-		console.log("Setting pendingPrice, id=" + id)
 		if(id === 0){
 			pendingPrice = 0
 		}
 		else{
-			console.log("really setting pending price")
+			
 			pendingPrice = this.getDishPrice(id)
 		}
 		
-		console.log("Pending price now=", pendingPrice)
 		this.notifyObservers()
 	}
 
@@ -124,20 +120,17 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 
-		console.log("adding dish to menu id=", id)
 		dishType = this.getDish(id).type
 
 		if(dishType == "starter"){
-			console.log("added starter")
 			menu.starter = id
 		}
 		else if(dishType == "main dish"){
-			console.log("added main dish")
 			menu.main = id
 		}
 		else if(dishType == "dessert"){
 			menu.dessert = id
-			console.log("added dessert")
+			
 		}
 
 		this.notifyObservers("addDishToMenu")

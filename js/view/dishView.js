@@ -3,13 +3,11 @@ var DishView = function (container, model){
 	model.addObserver(this)
 	var dishText = this.dishText = container.find("#dishText");
 	var ingredientView = this.ingredientView = container.find("#ingredientView");
-	//var dish = this.dish = 200
-
 
 	var load = function(){
 
 		dish = this.dish = model.getDish($("#dishView").attr('rel'))
-		console.log("dish.di = "+ dish.id)
+		
 
 		dishString = "<h2>" + dish.name + "</h2>" 
 		dishString = dishString + "<img class='dishImg' src='images/" + dish.image + "'/>"
@@ -19,13 +17,13 @@ var DishView = function (container, model){
 
 		dishText.html(dishString);
 
-
-		ingredientText = "<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>"
+		guests = model.getNumberOfGuests()
+		ingredientText = "<h4>Ingredients for " + guests + " people</h4>"
 		ingredientText = ingredientText + "<table class='table'"
 
 		for(key in dish.ingredients){
 			ingredient = dish.ingredients[key]
-			ingredientText = ingredientText + "<tr><td>" + ingredient.quantity + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>SEK</td><td>" + ingredient.price + "</td></tr>"
+			ingredientText = ingredientText + "<tr><td>" + ingredient.quantity*guests + " " + ingredient.unit + "</td><td>" + ingredient.name + "</td><td>SEK</td><td>" + ingredient.price*guests + "</td></tr>"
 
 		}
 
