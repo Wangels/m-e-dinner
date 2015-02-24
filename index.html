@@ -51,12 +51,12 @@
 				<div id="selectDish">
 					<div class="row" id="search"> <h3>Select Dish</h3>
 						<div class="col-md-6">
-							 <div class="input-group">
-							    <input type="text" class="form-control" placeholder="Enter key words" id="query" name="query" value="">
-								<div class="input-group-btn">
-							    	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-							    </div>
-							</div>
+							<form class="form-search">
+  								<div class="input-append">
+   	 								<input type="text" class="input-medium search-query">
+    								<button type="submit" class="btn btn-default" onclick="searchFunc()">Search</button>
+  								</div>
+  							</form>
 						</div>
 						<div class="col-md-6">
 

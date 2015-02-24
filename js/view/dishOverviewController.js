@@ -10,6 +10,10 @@ var DishOverviewController = function(view, model, mainController){
 
 var SearchController = function(model, mainController){
 
+	searchFunc = function(){
+		console.log("Searching")
+	}
+
 	allFunc = function(){
 		console.log("back to All")
 	}
