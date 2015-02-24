@@ -1,6 +1,6 @@
 var DishOverview = function(container, model){
 
-	//model.addObserver(this)
+	model.addObserver(this)
 
 	var dishGrid = this.dishGrid = container.find("#dishGrid");
 
@@ -8,10 +8,19 @@ var DishOverview = function(container, model){
 
 		var gridString = ""
 		var dishString = ""
-		var allDishes = model.getDishes()
+		//var allDishes = model.getAllDishes(model.getSearchType, model.getSearchFilter)
+		if(model.getSearchType() === "all"){
+			var allDishes = model.getDishes()
+		}
+		else{
+			var allDishes = model.getAllDishes(model.getSearchType(), model.getSearchFilter())
+		}
 
-		for(key in allDishes){
-			dish = allDishes[key]
+		console.log("id=" + allDishes[0].id)
+
+
+		for(i=0; i<allDishes.length;i++){
+			dish = allDishes[i]
 
 			dishString = "<div class='col-md-3'><div class='dish' id='" + dish.id + "'>"
 			dishString = dishString + "<img src='images/" + dish.image + "'/>"

@@ -5,6 +5,8 @@ var DinnerModel = function() {
 	var menu = {starter:0, main:0, dessert:0}
 	var pendingPrice = 0
 	this._observers = []
+	var searchType = "all"
+	var searchFilter = undefined
 
 
 	this.addObserver = function(observer){
@@ -27,7 +29,24 @@ var DinnerModel = function() {
 		this.notifyObservers("setNumberOfGuests")
 	}
 
+	this.getSearchType = function(){
+		return searchType
+	}
 
+	this.setSearchType = function(type){
+		searchType = type
+		this.notifyObservers
+		console.log(searchType)
+	}
+
+	this.getSearchFilter = function(){
+		return searchFilter
+	}
+
+	this.setSearchFilter = function(filter){
+		searchFilter = filter
+		this.notifyObservers()
+	}
 	// should return 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests
