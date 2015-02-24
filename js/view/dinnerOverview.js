@@ -1,24 +1,34 @@
 var DinnerOverview = function(container, model){
 	model.addObserver(this)
-	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverview");
+	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverviewDiv");
 
 	var loadDinnerOverview = function(obj){
+		console.log("loading dinnerOverview")
 		
 		var menu = model.getFullMenu()
 
 		var dinnerOverviewText = "<div class='row'><div class='col-md-2'></div>"
-		dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[0], model) + getDishDiv(menu[1], model) + getDishDiv(menu[2], model)
+		//dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[0], model) + getDishDiv(menu[1], model) + getDishDiv(menu[2], model)
 
-
+		for(key in menu){
+			if(!(menu[key] === 0)){
+				dinnerOverviewText = dinnerOverviewText + getDishDiv(menu[key], model)
+			}
+			else{
+				dinnerOverviewText = dinnerOverviewText + "<div class='col-md-2'></div>"
+			}
+		}
+	
 		dinnerOverviewText = dinnerOverviewText + "<div class='col-md-2' id='total'>Total:<br/>" + model.getTotalMenuPrice() + " SEK</div></div>"
 
-		dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><a href='dinner_preparation.html'><button type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></a></div><div class='col-md-2' id=printdiv></div>"
+		dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><button onclick='printFullRecipe()' type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></div><div class='col-md-2' id=printdiv></div>"
 
 		dinnerOverview.html(dinnerOverviewText)
 
 	}
 
 	this.update = function(obj){
+		console.log("updating dinnerOverview")
 		loadDinnerOverview()
 	}
 
@@ -42,7 +52,7 @@ var TopView = function(container, model){
 
 	var loadTop = function(obj){
 
-		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><a href='screenAfter.html'><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button></a>")
+		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><button onclick='goBack()' type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button>")
 	}
 
 	this.update = function(obj){
@@ -62,7 +72,9 @@ var DinnerPrepview = function(container, model){
 		var dinnerText = ""
 
 		for(dinnerKey in menu){
-			dinnerText = dinnerText + getPrepDishDiv(menu[dinnerKey], model)
+			if(!(menu[dinnerKey] === 0)){
+				dinnerText = dinnerText + getPrepDishDiv(menu[dinnerKey], model)
+			}
 		}
 
 		container.html(dinnerText)

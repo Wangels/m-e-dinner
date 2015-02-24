@@ -1,5 +1,5 @@
 
-var SideViewController = function(view, model ) {
+var SideViewController = function(view, model, mainController) {
  
 	view.plusButton.click(function(){
 		model.setNumberOfGuests(model.getNumberOfGuests() + 1);
@@ -12,6 +12,7 @@ var SideViewController = function(view, model ) {
 	});
 
 	view.confirmButton.click(function(){
+		mainController.showDinnerOverview()
 		console.log("clicked confirmButton")
 	})
 }

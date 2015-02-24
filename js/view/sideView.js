@@ -22,7 +22,7 @@ var SideView = function (container, model){
 	}
 
 	loadSideView()
-	model.addDishToMenu(100)
+	
 
 }
 
