@@ -18,7 +18,7 @@ $(function() {
 	var sideView = new SideView($("#sideView"), model);
 	var sideViewController = new SideViewController(sideView, model, mainController);
 
-	var dishOverview = new DishOverview($("#dishOverview"), model);
+	var dishOverview = new DishOverview($("#dishOverview"), model, mainController);
 	var dishOverviewController = new DishOverviewController(dishOverview, model, mainController);
 
 	var dishView = new DishView($("#dishView"), model);
@@ -60,6 +60,7 @@ var MainController = function(){
 		//shows view of one dish
 		
 		model.setPending(id)
+		model.setCurrentDish(id)
 
 		//in order to get the proper dish in the view we have to update it. 
 		model.notifyObservers()

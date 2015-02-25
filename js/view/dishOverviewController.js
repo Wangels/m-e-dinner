@@ -1,24 +1,40 @@
 var DishOverviewController = function(view, model, mainController){
+	/*
+	not needed
 	view.dishGrid.find(".dish").click(function(){
 
 		$("#dishView").attr('rel', this.id)
 		mainController.showDishview(this.id)
 
-	})
+	})*/ 
 }
 
+var DishImageController = function(id, mainController){
+
+	var containerID = "#" + id
+	
+	$(containerID).click(function(){
+		//$("#dishView").attr('rel', id)
+		
+		model.setCurrentDish(id)
+		mainController.showDishview(id)
+	})
+
+}
 
 var SearchController = function(model, mainController){
 
 	searchFunc = function(){
-		console.log("Searching")
-		//model.setSearchFilter(ngt)
+		var searchText = $("#searchText").val()
+		console.log("Searching, searchText=" + searchText)
+
+		model.setSearchFilter(searchText)
 
 	}
 
 	allFunc = function(){
 		console.log("back to All")
-		model.setSearchType("all")
+		model.setSearchType(undefined)
 	}
 
 	starterFunc = function(){

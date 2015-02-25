@@ -5,9 +5,10 @@ var DinnerModel = function() {
 	var menu = {starter:0, main:0, dessert:0}
 	var pendingPrice = 0
 	this._observers = []
-	var searchType = "all"
+	var searchType = undefined
 	var searchFilter = undefined
 
+	var currentDish = undefined
 
 	this.addObserver = function(observer){
 		//adds new observer to the observer array
@@ -28,6 +29,11 @@ var DinnerModel = function() {
 		numberOfGuests = num
 		this.notifyObservers("setNumberOfGuests")
 	}
+	// should return 
+	this.getNumberOfGuests = function() {
+		return numberOfGuests
+	}
+
 
 	this.getSearchType = function(){
 		return searchType
@@ -35,7 +41,7 @@ var DinnerModel = function() {
 
 	this.setSearchType = function(type){
 		searchType = type
-		this.notifyObservers
+		this.notifyObservers()
 		console.log(searchType)
 	}
 
@@ -45,12 +51,10 @@ var DinnerModel = function() {
 
 	this.setSearchFilter = function(filter){
 		searchFilter = filter
+		//console.log("searchFilter =" + searchFilter)
 		this.notifyObservers()
 	}
-	// should return 
-	this.getNumberOfGuests = function() {
-		return numberOfGuests
-	}
+	
 
 	this.setPending = function(id){
 		if(id === 0){
@@ -67,6 +71,17 @@ var DinnerModel = function() {
 	this.getPending = function(){
 		return pendingPrice
 	}
+
+
+	this.getCurrentDish = function(){
+		return currentDish
+	}
+
+	this.setCurrentDish = function(id){
+		currentDish = id
+		this.notifyObservers()
+	}
+
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(dishType) {
 
@@ -189,7 +204,11 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
-		return dish.type == type && found;
+		if (type) {
+			return dish.type == type && found;
+		} else {
+			return found;
+		}
 	  });   
 	}
 

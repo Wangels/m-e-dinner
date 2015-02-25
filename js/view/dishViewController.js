@@ -2,7 +2,7 @@ var DishViewController = function(view, model, mainController){
 
 	confirmDish = function(){
 	//view.ingredientView.find("#confirmDish").click(function(){
-		model.addDishToMenu(view.dishId);
+		model.addDishToMenu(model.getCurrentDish());
 		model.setPending(0)
 	}
 

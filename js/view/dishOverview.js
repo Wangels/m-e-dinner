@@ -1,4 +1,4 @@
-var DishOverview = function(container, model){
+var DishOverview = function(container, model, mainController){
 
 	model.addObserver(this)
 
@@ -9,14 +9,11 @@ var DishOverview = function(container, model){
 		var gridString = ""
 		var dishString = ""
 		//var allDishes = model.getAllDishes(model.getSearchType, model.getSearchFilter)
-		if(model.getSearchType() === "all"){
-			var allDishes = model.getDishes()
-		}
-		else{
-			var allDishes = model.getAllDishes(model.getSearchType(), model.getSearchFilter())
-		}
-
-		console.log("id=" + allDishes[0].id)
+		
+		var allDishes = model.getAllDishes(model.getSearchType(), model.getSearchFilter())
+		
+		var imgControllers = []
+		//console.log("id=" + allDishes[0].id)
 
 
 		for(i=0; i<allDishes.length;i++){
@@ -27,11 +24,18 @@ var DishOverview = function(container, model){
 			dishString = dishString + "<h4><span>" + dish.name + "</span></h4>"
 			dishString = dishString + "<p>Lorem ipsum balla enuhsn euhsne uhsen</p>"
 			dishString = dishString + "</div></div>"
-			
+
 			gridString = gridString + dishString 
 		}
 
 		dishGrid.html(gridString)
+
+		//need to add listeners to be able to click on the dishes
+		for(i=0; i<allDishes.length;i++){
+			dish = allDishes[i]
+			imgControllers[i] = new DishImageController(dish.id, mainController)
+		}
+
 
 	}
 
