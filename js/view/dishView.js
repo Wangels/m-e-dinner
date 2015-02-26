@@ -1,6 +1,8 @@
 var DishView = function (container, model){
 
 	model.addObserver(this)
+	var observs = ["setCurrentDish"]
+
 	var dishText = this.dishText = container.find("#dishText");
 	var ingredientView = this.ingredientView = container.find("#ingredientView");
 
@@ -33,14 +35,17 @@ var DishView = function (container, model){
 
 			ingredientView.html(ingredientText)
 
-			return dish.id
+			//return dish.id
 
 		}
 
 	}
 
-	this.update = function(obj){
-		this.dishId = load() //bläääää :((
+	this.update = function(updateString){
+		if(observs.indexOf(updateString)>-1){
+			//this.dishId = load() //bläääää :((
+			load()
+		}
 	}
 
 	load()

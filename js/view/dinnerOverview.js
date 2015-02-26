@@ -1,5 +1,6 @@
 var DinnerOverview = function(container, model){
 	model.addObserver(this)
+	var observs = ["addDishToMenu", "setNumberOfGuests"]
 	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverviewDiv");
 
 	var loadDinnerOverview = function(obj){
@@ -26,9 +27,10 @@ var DinnerOverview = function(container, model){
 
 	}
 
-	this.update = function(obj){
-		
-		loadDinnerOverview()
+	this.update = function(updateString){
+		if(observs.indexOf(updateString)>-1){
+			loadDinnerOverview()
+		}
 	}
 
 	loadDinnerOverview()
@@ -48,14 +50,17 @@ var getDishDiv = function(dish, model){
 var TopView = function(container, model){
 
 	model.addObserver(this)
+	observs = ["setNumberOfGuests"]
 
 	var loadTop = function(obj){
 
 		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><button onclick='goBack()' type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button>")
 	}
 
-	this.update = function(obj){
-		loadTop()
+	this.update = function(updateString){
+		if(observs.indexOf(updateString)>-1){
+			loadTop()
+		}
 	}
 
 	loadTop()

@@ -1,5 +1,6 @@
 var SideView = function (container, model){
 	model.addObserver(this)
+	var observs = ["setNumberOfGuests", "addDishToMenu", "setPending"]
 
 	var numberOfGuests = this.numberOfGuests = container.find("#numberOfGuests");
 	var plusButton = this.plusButton = container.find("#plusGuest");
@@ -15,9 +16,10 @@ var SideView = function (container, model){
 		
 	}
 
-	this.update = function(obj){
-		loadSideView()
-
+	this.update = function(updateString){
+		if(observs.indexOf(updateString)>-1){
+			loadSideView()
+		}
 	}
 
 	loadSideView()

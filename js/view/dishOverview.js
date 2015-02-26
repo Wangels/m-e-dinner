@@ -2,6 +2,8 @@ var DishOverview = function(container, model, mainController){
 
 	model.addObserver(this)
 
+	var observs = ["setSearchFilter", "setSearchType"] //array of what updates this view is interested in, if notifyObservers() passes one of these we 
+
 	var dishGrid = this.dishGrid = container.find("#dishGrid");
 
 	var loadDishOverview = function(){
@@ -39,8 +41,11 @@ var DishOverview = function(container, model, mainController){
 
 	}
 
-	this.update = function(obj){
-		loadDishOverview()
+	this.update = function(updateString){
+		if(observs.indexOf(updateString)>-1){
+			loadDishOverview()
+		}
+
 	}
 
 	loadDishOverview()

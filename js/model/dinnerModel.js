@@ -13,7 +13,6 @@ var DinnerModel = function() {
 	this.addObserver = function(observer){
 		//adds new observer to the observer array
 		this._observers.push(observer)
-		//console.log(this._observers)
 	}
 
 
@@ -21,7 +20,6 @@ var DinnerModel = function() {
 		//calls update method on all observers in the observer array
 		for(observerKey in this._observers){
 			this._observers[observerKey].update(obj)
-			
 		}
 	}
 
@@ -41,8 +39,8 @@ var DinnerModel = function() {
 
 	this.setSearchType = function(type){
 		searchType = type
-		this.notifyObservers()
-		console.log(searchType)
+		this.notifyObservers("setSearchType")
+		//console.log(searchType)
 	}
 
 	this.getSearchFilter = function(){
@@ -52,7 +50,7 @@ var DinnerModel = function() {
 	this.setSearchFilter = function(filter){
 		searchFilter = filter
 		//console.log("searchFilter =" + searchFilter)
-		this.notifyObservers()
+		this.notifyObservers("setSearchFilter")
 	}
 	
 
@@ -65,7 +63,7 @@ var DinnerModel = function() {
 			pendingPrice = this.getDishPrice(id)
 		}
 		
-		this.notifyObservers()
+		this.notifyObservers("setPending")
 	}
 
 	this.getPending = function(){
@@ -79,7 +77,7 @@ var DinnerModel = function() {
 
 	this.setCurrentDish = function(id){
 		currentDish = id
-		this.notifyObservers()
+		this.notifyObservers("setCurrentDish")
 	}
 
 	//Returns the dish that is on the menu for selected type 
