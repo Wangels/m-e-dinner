@@ -1,6 +1,6 @@
 var SideView = function (container, model, mainController){
 	model.addObserver(this)
-	var observs = ["setNumberOfGuests", "addDishToMenu", "setPending"]
+	var observs = ["setNumberOfGuests", "addDishToMenu", "setPending", "removeDishFromMenu"]
 
 
 	var numberOfGuests = this.numberOfGuests = container.find("#numberOfGuests");
@@ -22,7 +22,7 @@ var SideView = function (container, model, mainController){
 			dish = dishes[i]
 			if(dish){
 				var dishID = "#remove" + dish.id
-				removeCtrls = new RemoveController(dish.id, $(dishID), mainController)
+				removeCtrls = new RemoveController(dish.id, $(dishID), model)
 			}
 		}
 	}
@@ -43,9 +43,9 @@ var generateDishList = function(model){
 		dishes = model.getFullMenu()
 		var listString = "<table class='table'><tr><th>Dish name</th><th>Cost</th><td></td></tr>"
 
-		for(key in dishes){
-			if(dishes[key]){
-				listString = listString + "<tr><td>" + dishes[key].name + "</td><td>SEK " + model.getDishPrice(dishes[key].id) + "</td><td><span id='remove" + dish.id + "' class='glyphicon glyphicon-remove'></span></td></tr> "
+		for(d in dishes){
+			if(dishes[d]){
+				listString = listString + "<tr><td>" + dishes[d].name + "</td><td>SEK " + model.getDishPrice(dishes[d].id) + "</td><td><span id='remove" + dishes[d].id + "' class='glyphicon glyphicon-remove'></span></td></tr> "
 			}
 		}
 

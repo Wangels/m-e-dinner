@@ -1,13 +1,3 @@
-var DishOverviewController = function(view, model, mainController){
-	/*
-	not needed
-	view.dishGrid.find(".dish").click(function(){
-
-		$("#dishView").attr('rel', this.id)
-		mainController.showDishview(this.id)
-
-	})*/ 
-}
 
 var DishImageController = function(id, mainController){
 

@@ -1,7 +1,7 @@
 var DishView = function (container, model, mainController){
 
 	model.addObserver(this)
-	var observs = ["setCurrentDish"]
+	var observs = ["setCurrentDish", "setNumberOfGuests"]
 
 	var dishText = this.dishText = container.find("#dishText");
 	var ingredientView = this.ingredientView = container.find("#ingredientView");

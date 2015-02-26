@@ -19,10 +19,10 @@ $(function() {
 	var sideViewController = new SideViewController(sideView, model, mainController);
 
 	var dishOverview = new DishOverview($("#dishOverview"), model, mainController);
-	var dishOverviewController = new DishOverviewController(dishOverview, model, mainController);
+	//var dishOverviewController = new DishOverviewController(dishOverview, model, mainController);
 
 	var dishView = new DishView($("#dishView"), model, mainController);
-	var dishViewController = new DishViewController(dishView, model, mainController);
+	//var dishViewController = new DishViewController(dishView, model, mainController);
 
 	var top = new TopView($("#top"), model, mainController);
 	//var topViewController = new TopViewController(top, model, mainController);
