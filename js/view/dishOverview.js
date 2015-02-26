@@ -50,3 +50,11 @@ var DishOverview = function(container, model, mainController){
 
 	loadDishOverview()
 }
+
+var SearchView = function(container, model, mainController){
+	var searchButton = this.searchButton = container.find("#searchButton")
+	var allFilter = this.allFilter = container.find("#all")
+	var starterFilter = this.starterFilter = container.find("#starter")
+	var mainFilter = this.mainFilter = container.find("#main")
+	var dessertFilter = this.dessertFilter = container.find("#dessert")
+}

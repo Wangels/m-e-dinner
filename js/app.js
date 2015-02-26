@@ -21,16 +21,18 @@ $(function() {
 	var dishOverview = new DishOverview($("#dishOverview"), model, mainController);
 	var dishOverviewController = new DishOverviewController(dishOverview, model, mainController);
 
-	var dishView = new DishView($("#dishView"), model);
+	var dishView = new DishView($("#dishView"), model, mainController);
 	var dishViewController = new DishViewController(dishView, model, mainController);
 
-	var top = new TopView($("#top"), model);
-	var topViewController = new TopViewController(top, model, mainController);
-	var dinnerOverview = new DinnerOverview($("#dinnerOverview"), model);
+	var top = new TopView($("#top"), model, mainController);
+	//var topViewController = new TopViewController(top, model, mainController);
+	var dinnerOverview = new DinnerOverview($("#dinnerOverview"), model, mainController);
 	var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model, mainController);
 
 	var dinnerPrepview = new DinnerPrepview($("#prepOverview"), model);
-	var searchController = new SearchController(model, mainController);
+
+	var searchView = new SearchView($("#search"), model, mainController)
+	var searchController = new SearchController(searchView, model, mainController);
 	
 	
 });

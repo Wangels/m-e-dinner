@@ -22,33 +22,33 @@ var DishImageController = function(id, mainController){
 
 }
 
-var SearchController = function(model, mainController){
+var SearchController = function(view, model, mainController){
 
-	searchFunc = function(){
+	view.searchButton.click(function(){
 		var searchText = $("#searchText").val()
-		console.log("Searching, searchText=" + searchText)
+		//console.log("Searching, searchText=" + searchText)
 
 		model.setSearchFilter(searchText)
 
-	}
+	})
 
-	allFunc = function(){
-		console.log("back to All")
+	view.allFilter.click(function(){
+		//console.log("back to All")
 		model.setSearchType(undefined)
-	}
+	})
 
-	starterFunc = function(){
-		console.log("Starter activated")
+	view.starterFilter.click(function(){
+		//console.log("Starter activated")
 		model.setSearchType("starter")
-	}
+	})
 
-	mainFunc = function(){
-		console.log("Main dish activated")
+	view.mainFilter.click(function(){
+		//console.log("Main dish activated")
 		model.setSearchType("main dish")
-	}
+	})
 
-	dessertFunc = function(){
-		console.log("Dessert activated")
+	view.dessertFilter.click(function(){
+		//console.log("Dessert activated")
 		model.setSearchType("dessert")
-	}
+	})
 }

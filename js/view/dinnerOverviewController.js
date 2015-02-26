@@ -1,13 +1,19 @@
 var DinnerOverviewController = function(view, model, mainController){
 
-	printFullRecipe = function(){
+	/*printFullRecipe = function(){
 		mainController.showDinnerPrepview()
-	}
+	}*/
 	
 }
 
-var TopViewController = function(view, model, mainController){
-	goBack = function(){
+var PrintController = function(container, mainController){
+	container.click(function(){
+		mainController.showDinnerPrepview()
+	})
+}
+
+var GoBackController = function(container, mainController){
+	container.click(function(){
 		mainController.showSelectDish()
-	}
+	})
 }

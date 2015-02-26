@@ -54,7 +54,7 @@
 							<form class="form-search">
   								<div class="input-append">
    	 								<input id="searchText" type="text" class="input-medium search-query">
-    								<button type="button" class="btn btn-default" onclick="searchFunc()">Search</button>
+    								<button id="searchButton" type="button" class="btn btn-default">Search</button>
   								</div>
   							</form>
 						</div>
@@ -66,10 +66,10 @@
 										Filter <span class="caret"></span>
 									</button>
  									<ul class="dropdown-menu" role="menu">
- 										<li><a href="#" onclick="allFunc()">All dishes</a></li>
-    									<li><a href="#" onclick="starterFunc()">Starter</a></li>
-   	 									<li><a href="#" onclick="mainFunc()">Main Dish</a></li>
-    									<li><a href="#" onclick="dessertFunc()">Dessert</a></li>
+ 										<li><a href="#" id="all">All dishes</a></li>
+    									<li><a href="#" id="starter">Starter</a></li>
+   	 									<li><a href="#" id="main">Main Dish</a></li>
+    									<li><a href="#" id="dessert">Dessert</a></li>
     								</ul>
 								</div>
 						</div>

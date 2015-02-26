@@ -1,6 +1,6 @@
 var DishViewController = function(view, model, mainController){
 
-	confirmDish = function(){
+	/*confirmDish = function(){
 	//view.ingredientView.find("#confirmDish").click(function(){
 		model.addDishToMenu(model.getCurrentDish());
 		model.setPending(0)
@@ -13,5 +13,20 @@ var DishViewController = function(view, model, mainController){
 		mainController.showSelectDish()
 		model.setPending(0)
 		
-	}
+	}*/
+}
+
+var ConfirmDishController = function(container, mainController){
+	container.click(function(){
+		model.addDishToMenu(model.getCurrentDish());
+		model.setPending(0)
+	})
+}
+
+var DishBackController = function(container, mainController){
+	
+	container.click(function(){
+		mainController.showSelectDish()
+		model.setPending(0)
+	})
 }

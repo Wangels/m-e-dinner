@@ -1,4 +1,4 @@
-var DinnerOverview = function(container, model){
+var DinnerOverview = function(container, model, mainController){
 	model.addObserver(this)
 	var observs = ["addDishToMenu", "setNumberOfGuests"]
 	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverviewDiv");
@@ -21,9 +21,10 @@ var DinnerOverview = function(container, model){
 	
 		dinnerOverviewText = dinnerOverviewText + "<div class='col-md-2' id='total'>Total:<br/>" + model.getTotalMenuPrice() + " SEK</div></div>"
 
-		dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><button onclick='printFullRecipe()' type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></div><div class='col-md-2' id=printdiv></div>"
+		dinnerOverviewText = dinnerOverviewText + "<div class='row'><div class='col-md-2'></div><div class='col-md-2' id='printdiv'></div><div class='col-md-2' id='printdiv'><button type='button' class='btn btn-default btn-lg' id='printbutton'>Print Full Recipe</button></div><div class='col-md-2' id=printdiv></div>"
 
 		dinnerOverview.html(dinnerOverviewText)
+		var printController = new PrintController(container.find("#printbutton"), mainController)
 
 	}
 
@@ -47,14 +48,15 @@ var getDishDiv = function(dish, model){
 	return dishText
 }
 
-var TopView = function(container, model){
+var TopView = function(container, model, mainController){
 
 	model.addObserver(this)
 	observs = ["setNumberOfGuests"]
 
 	var loadTop = function(obj){
 
-		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><button onclick='goBack()' type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button>")
+		container.html("<h3>My Dinner: " + model.getNumberOfGuests() + " people</h3><button type='button' class='btn btn-default' id='backbutton'><span class='glyphicon glyphicon-chevron-left'></span>   Go back and edit dinner</button>")
+		var goBackController = new GoBackController(container.find("#backbutton"), mainController)
 	}
 
 	this.update = function(updateString){
