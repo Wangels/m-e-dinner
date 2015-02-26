@@ -15,7 +15,7 @@ $(function() {
 
 
 	//And create the needed controllers and views
-	var sideView = new SideView($("#sideView"), model);
+	var sideView = new SideView($("#sideView"), model, mainController);
 	var sideViewController = new SideViewController(sideView, model, mainController);
 
 	var dishOverview = new DishOverview($("#dishOverview"), model, mainController);

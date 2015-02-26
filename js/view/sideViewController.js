@@ -16,3 +16,12 @@ var SideViewController = function(view, model, mainController) {
 		
 	})
 }
+
+var RemoveController = function(id, container, model, mainController){
+
+	console.log("removeController, id=" + id)
+	container.click(function(){
+		console.log("clicked")
+		model.removeDish(this.id)
+	})
+}
