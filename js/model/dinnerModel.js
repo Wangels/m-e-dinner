@@ -1,5 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
+
+	var api_key = 'dvxSUK163SzdpwzA1C825d98lxc5YmU1'
  
 	var numberOfGuests = 2
 	var menu = {starter:0, main:0, dessert:0}
@@ -17,15 +19,18 @@ var DinnerModel = function() {
 
 
 	this.notifyObservers = function(obj){
-		//calls update method on all observers in the observer array
-		for(observerKey in this._observers){
-			this._observers[observerKey].update(obj)
+		if(this._observers){
+			//calls update method on all observers in the observer array
+			console.log("In notifyObservers, obj= " + obj)
+			for(var i=0;i<this._observers.length;i++){
+				this._observers[i].update(obj)
+			}
 		}
 	}
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num
-		this.notifyObservers("setNumberOfGuests")
+		this.notifyObservers(["setNumberOfGuests"])
 	}
 	// should return 
 	this.getNumberOfGuests = function() {
@@ -39,7 +44,7 @@ var DinnerModel = function() {
 
 	this.setSearchType = function(type){
 		searchType = type
-		this.notifyObservers("setSearchType")
+		this.notifyObservers(["setSearchType"])
 		//console.log(searchType)
 	}
 
@@ -50,7 +55,7 @@ var DinnerModel = function() {
 	this.setSearchFilter = function(filter){
 		searchFilter = filter
 		//console.log("searchFilter =" + searchFilter)
-		this.notifyObservers("setSearchFilter")
+		this.notifyObservers(["setSearchFilter"])
 	}
 	
 
@@ -63,7 +68,7 @@ var DinnerModel = function() {
 			pendingPrice = this.getDishPrice(id)
 		}
 		
-		this.notifyObservers("setPending")
+		this.notifyObservers(["setPending"])
 	}
 
 	this.getPending = function(){
@@ -77,7 +82,8 @@ var DinnerModel = function() {
 
 	this.setCurrentDish = function(id){
 		currentDish = id
-		this.notifyObservers("setCurrentDish")
+		console.log("setting CurrentDish")
+		this.notifyObservers(["setCurrentDish"])
 	}
 
 	//Returns the dish that is on the menu for selected type 
@@ -99,9 +105,16 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 
-		var dishList = [this.getDish(menu.starter), this.getDish(menu.main), this.getDish(menu.dessert)]
+		if(menu.starter != 0){
+			this.getDish(menu.starter)
+		}
+		if(menu.main != 0){
+			this.getDish(menu.main)
+		}
+		if(menu.dessert != 0){
+			this.getDish(menu.dessert)
+		}
 
-		return dishList
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -111,8 +124,8 @@ var DinnerModel = function() {
 
 		for(key in dishList){
 			//ingredientList = ingredientList.concat(dishes[key].ingredients)
-			for(ingredientKey in dishList[key].ingredients){
-				ingredientList.push(dishList[key].ingredients[ingredientKey])
+			for(ingredientKey in dishList[key].Ingredients){
+				ingredientList.push(dishList[key].Ingredients[ingredientKey])
 			}
 		}
 
@@ -165,7 +178,7 @@ var DinnerModel = function() {
 			
 		}
 
-		this.notifyObservers("addDishToMenu")
+		this.notifyObservers(["addDishToMenu"])
 
 	}
 
@@ -177,7 +190,7 @@ var DinnerModel = function() {
 			}
 		}
 
-		this.notifyObservers("removeDishFromMenu")
+		this.notifyObservers(["removeDishFromMenu"])
 	}
 
 	this.getDishes = function(){
@@ -187,37 +200,41 @@ var DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-	  return $(dishes).filter(function(index,dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
+	
+	this.getAllDishes = function(type, filter){
+		var url = 'http://api.bigoven.com/recipes?pg=1&rpp=10&api_key=' + api_key
+		$.ajax({
+			type: 'GET',
+			url: url,
+			dataType: 'json',
+			success: function(data){
+				console.log("success", data.Results)
+				this.notifyObservers(["getAllDishes", data.Results])
+				//return data.Results
+			}.bind(this), //to get the right context
+			error: function(xhr, status, error){
+				console.error("gick dåligt!");
 			}
-		}
-		if (type) {
-			return dish.type == type && found;
-		} else {
-			return found;
-		}
-	  });   
+		})
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  	for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
-		return 0
+		if(id =! 0){
+		  	var url = 'http://api.bigoven.com/recipe/' + id + '?api_key=' + api_key
+			$.ajax({
+				type: 'GET',
+				url: url,
+				dataType: 'json',
+				success: function(data){
+					console.log("success", data)
+					this.notifyObservers(["getDish", data])
+					//return data.Results
+				}.bind(this), //to get the right context
+				error: function(xhr, status, error){
+					console.error("gick dåligt!");
+				}
+			})
 	}
 
 

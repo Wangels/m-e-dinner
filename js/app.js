@@ -65,7 +65,7 @@ var MainController = function(){
 		model.setCurrentDish(id)
 
 		//in order to get the proper dish in the view we have to update it. 
-		model.notifyObservers()
+		//model.notifyObservers([])
 		$("#dishBigView").show();
 		$("#selectDish").hide()
 	}

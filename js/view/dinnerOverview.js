@@ -28,8 +28,8 @@ var DinnerOverview = function(container, model, mainController){
 
 	}
 
-	this.update = function(updateString){
-		if(observs.indexOf(updateString)>-1){
+	this.update = function(updateObject){
+		if(observs.indexOf(updateObject[0])>-1){
 			loadDinnerOverview()
 		}
 	}
@@ -59,8 +59,8 @@ var TopView = function(container, model, mainController){
 		var goBackController = new GoBackController(container.find("#backbutton"), mainController)
 	}
 
-	this.update = function(updateString){
-		if(observs.indexOf(updateString)>-1){
+	this.update = function(updateObject){
+		if(observs.indexOf(updateObject[0])>-1){
 			loadTop()
 		}
 	}
@@ -70,6 +70,7 @@ var TopView = function(container, model, mainController){
 
 var DinnerPrepview = function(container, model){
 	model.addObserver(this)
+	var observs = ["addDishToMenu"]
 
 	var loadDinnerPrepview = function(obj){
 
@@ -86,8 +87,10 @@ var DinnerPrepview = function(container, model){
 		container.html(dinnerText)
 	}
 
-	this.update = function(obj){
-		loadDinnerPrepview()
+	this.update = function(updateObject){
+		if(observs.indexOf(updateObject[0])>-1){
+			loadDinnerPrepview()
+		}
 	}
 
 	loadDinnerPrepview()
@@ -95,8 +98,8 @@ var DinnerPrepview = function(container, model){
 
 var getPrepDishDiv = function(dish, model){
 	var dishText = "<div class='row' id='dishPrep'><div class='col-md-6'><div class='dishDescription'>"
-	dishText = dishText + "<img src='images/" + dish.image + "'/>"
-	dishText = dishText + "<h4><span>" + dish.name + "</span></h4></br> Lorem impsum dolor sit amet, consecteur adipsicing elit, sed do eisudmod tempor indcidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exertitation ullamco labris nisi ut aliquip."
+	dishText = dishText + "<img src='images/" + dish.ImageURL + "'/>"
+	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4></br> Lorem impsum dolor sit amet, consecteur adipsicing elit, sed do eisudmod tempor indcidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exertitation ullamco labris nisi ut aliquip."
 	dishText = dishText + "</div></div><div class='col-md-6'><h5><span>Preparation<span></h5></br>" + dish.description 
 	dishText = dishText + "</div></div>"
 
