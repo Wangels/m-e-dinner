@@ -24,7 +24,7 @@ var DishOverview = function(container, model, mainController){
 				dishString = "<div class='col-md-3'><div class='dish' id='" + dish.RecipeID + "'>"
 				dishString = dishString + "<img src='" + dish.ImageURL + "'/>"
 				dishString = dishString + "<h4><span>" + dish.Title + "</span></h4>"
-				dishString = dishString + "<p>Lorem ipsum balla enuhsn euhsne uhsen</p>"
+				//dishString = dishString + "<p>" + dish.Description + "</p>"
 				dishString = dishString + "</div></div>"
 
 				gridString = gridString + dishString 

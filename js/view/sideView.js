@@ -18,17 +18,18 @@ var SideView = function (container, model, mainController){
 		var removeCtrls = []
 
 		dishes = model.getFullMenu()
-		for(i=0; i<dishes.length;i++){
-			dish = dishes[i]
-			if(dish){
-				var dishID = "#remove" + dish.RecipeID
-				removeCtrls = new RemoveController(dish.RecipeID, $(dishID), model)
+		if(dishes){
+			for(i=0; i<dishes.length;i++){
+				dish = dishes[i]
+				if(dish){
+					var dishID = "#remove" + dish.RecipeID
+					removeCtrls = new RemoveController(dish.RecipeID, $(dishID), model)
+				}
 			}
 		}
 	}
 
 	this.update = function(updateObject){
-		console.log("SideView updating, " + updateObject)
 		if(observs.indexOf(updateObject[0])>-1){
 			loadSideView()
 		}
@@ -46,7 +47,7 @@ var generateDishList = function(model){
 
 		for(d in dishes){
 			if(dishes[d]){
-				listString = listString + "<tr><td>" + dishes[d].Title + "</td><td>SEK " + model.getDishPrice(dishes[d].RecipeID) + "</td><td><span id='remove" + dishes[d].RecipeID + "' class='glyphicon glyphicon-remove'></span></td></tr> "
+				listString = listString + "<tr><td>" + dishes[d].Title + "</td><td>SEK " + model.getDishPrice(dishes[d]) + "</td><td><span id='remove" + dishes[d].RecipeID + "' class='glyphicon glyphicon-remove'></span></td></tr> "
 			}
 		}
 

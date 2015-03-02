@@ -61,8 +61,8 @@ var MainController = function(){
 	this.showDishview = function(id){
 		//shows view of one dish
 		
-		model.setPending(id)
-		model.setCurrentDish(id)
+		//model.setPending(id)
+		//model.setCurrentDish(id)
 
 		//in order to get the proper dish in the view we have to update it. 
 		//model.notifyObservers([])

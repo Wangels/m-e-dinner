@@ -6,7 +6,8 @@ var DishImageController = function(id, mainController){
 	$(containerID).click(function(){
 		//$("#dishView").attr('rel', id)
 		
-		model.setCurrentDish(id)
+		//model.setCurrentDish()
+		model.getDish(id) //get the dish to prepare for the dishView
 		mainController.showDishview(id)
 	})
 

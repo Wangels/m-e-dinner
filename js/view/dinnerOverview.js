@@ -25,7 +25,6 @@ var DinnerOverview = function(container, model, mainController){
 
 		dinnerOverview.html(dinnerOverviewText)
 		var printController = new PrintController(container.find("#printbutton"), mainController)
-
 	}
 
 	this.update = function(updateObject){
@@ -39,10 +38,11 @@ var DinnerOverview = function(container, model, mainController){
 }
 
 var getDishDiv = function(dish, model){
+	console.log("Dishdiv, dish= " + dish.RecipeID)
 	var dishText = "<div class='col-md-2'><div class='dish'>"
-	dishText = dishText + "<img src='images/" + dish.image + "'/>"
-	dishText = dishText + "<h4><span>" + dish.name + "</span></h4>"
-	dishText = dishText + "<p class='dinnerView'>" + model.getDishPrice(dish.id) + " SEK</p>"
+	dishText = dishText + "<img src='" + dish.ImageURL + "'/>"
+	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4>"
+	dishText = dishText + "<p class='dinnerView'>" + model.getDishPrice(dish) + " SEK</p>"
 	dishText = dishText + "</div></div>"
 
 	return dishText
@@ -98,9 +98,9 @@ var DinnerPrepview = function(container, model){
 
 var getPrepDishDiv = function(dish, model){
 	var dishText = "<div class='row' id='dishPrep'><div class='col-md-6'><div class='dishDescription'>"
-	dishText = dishText + "<img src='images/" + dish.ImageURL + "'/>"
-	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4></br> Lorem impsum dolor sit amet, consecteur adipsicing elit, sed do eisudmod tempor indcidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exertitation ullamco labris nisi ut aliquip."
-	dishText = dishText + "</div></div><div class='col-md-6'><h5><span>Preparation<span></h5></br>" + dish.description 
+	dishText = dishText + "<img src='" + dish.ImageURL + "'/>"
+	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4></br><p>" + dish.Description + "</p>"
+	dishText = dishText + "</div></div><div class='col-md-6'><h5><span>Preparation<span></h5></br><p>" + dish.Instructions + "</p>"
 	dishText = dishText + "</div></div>"
 
 	return dishText
