@@ -176,7 +176,7 @@ var DinnerModel = function() {
 
 		for(var i=0; i<menu.length;i++){
 			if(menu[i].RecipeID === dishObject.RecipeID){
-				inMenu = false
+				notInMenu = false
 			}
 			
 		}
