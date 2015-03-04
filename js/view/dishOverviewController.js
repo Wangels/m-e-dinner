@@ -17,29 +17,33 @@ var SearchController = function(view, model, mainController){
 
 	view.searchButton.click(function(){
 		var searchText = $("#searchText").val()
-		//console.log("Searching, searchText=" + searchText)
 
 		model.setSearchFilter(searchText)
+		model.getAllDishes()
 
 	})
 
 	view.allFilter.click(function(){
-		//console.log("back to All")
+		
 		model.setSearchType(undefined)
+		model.getAllDishes()
 	})
 
 	view.starterFilter.click(function(){
-		//console.log("Starter activated")
+		
 		model.setSearchType("starter")
+		model.getAllDishes()
 	})
 
 	view.mainFilter.click(function(){
-		//console.log("Main dish activated")
+		
 		model.setSearchType("main dish")
+		model.getAllDishes()
 	})
 
 	view.dessertFilter.click(function(){
-		//console.log("Dessert activated")
+		
 		model.setSearchType("dessert")
+		model.getAllDishes()
 	})
 }

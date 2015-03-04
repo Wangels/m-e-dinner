@@ -22,7 +22,6 @@ var DinnerModel = function() {
 	this.notifyObservers = function(obj){
 		if(this._observers){
 			//calls update method on all observers in the observer array
-			//console.log("In notifyObservers, obj= " + obj)
 			for(var i=0;i<this._observers.length;i++){
 				this._observers[i].update(obj)
 			}
@@ -30,7 +29,12 @@ var DinnerModel = function() {
 	}
 
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num
+		if(num>0){
+			numberOfGuests = num
+		}
+		else{
+			numberOfGuests = 0
+		}
 		this.notifyObservers(["setNumberOfGuests"])
 	}
 	// should return 
@@ -46,7 +50,7 @@ var DinnerModel = function() {
 	this.setSearchType = function(type){
 		searchType = type
 		this.notifyObservers(["setSearchType"])
-		//console.log(searchType)
+		
 	}
 
 	this.getSearchFilter = function(){
@@ -55,7 +59,6 @@ var DinnerModel = function() {
 
 	this.setSearchFilter = function(filter){
 		searchFilter = filter
-		//console.log("searchFilter =" + searchFilter)
 		this.notifyObservers(["setSearchFilter"])
 	}
 	
@@ -83,7 +86,6 @@ var DinnerModel = function() {
 
 	this.setCurrentDish = function(dishObject){
 		currentDish = dishObject
-		console.log("setting CurrentDish")
 		this.notifyObservers(["setCurrentDish"])
 	}
 
@@ -135,7 +137,7 @@ var DinnerModel = function() {
 		}
 
 		totalPrice = totalPrice*numberOfGuests
-		return totalPrice
+		return Math.round(totalPrice)
 
 
 	}
@@ -155,6 +157,8 @@ var DinnerModel = function() {
 		for(var i=0;i<menu.length;i++){
 			totalPrice = totalPrice + this.getDishPrice(menu[i])
 		}
+
+		totalPrice = totalPrice + pendingPrice
 
 		return totalPrice
 	}
@@ -176,8 +180,6 @@ var DinnerModel = function() {
 			
 		}*/
 
-		console.log("Add dish to menu, dishObject = ", dishObject.RecipeID)
-
 		var notInMenu = true
 
 		for(var i=0; i<menu.length;i++){
@@ -187,8 +189,6 @@ var DinnerModel = function() {
 			
 		}
 		if(notInMenu){
-
-				console.log("Really adding dish to menu")
 				menu.push(dishObject)
 				this.notifyObservers(["addDishToMenu"])
 			}
@@ -214,20 +214,31 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	
-	this.getAllDishes = function(type, filter){
-		var url = 'http://api.bigoven.com/recipes?pg=1&rpp=10&api_key=' + api_key
+	this.getAllDishes = function(){
+		var url = 'http://api.bigoven.com/recipes?'
+
+		if(searchFilter){
+			url = url + 'any_kw=' + searchFilter + '&'
+		}
+		else if(searchType){
+			url = url + 'any_kw=' + searchType + '&'
+		}
+
+
+		url = url + 'pg=1&rpp=12&api_key=' + api_key
+
 		$.ajax({
 			type: 'GET',
 			url: url,
 			dataType: 'json',
 			success: function(data){
-				//console.log("success", data.Results)
 				this.notifyObservers(["getAllDishes", data.Results])
 				//return data.Results
 			}.bind(this), //to get the right context
 			error: function(xhr, status, error){
-				console.error("gick dåligt!");
-			}
+				console.error("error calling getAllDishes!");
+				this.notifyObservers(["getAllDishes", "error"])
+			}.bind(this)
 		})
 	}
 
@@ -239,15 +250,15 @@ var DinnerModel = function() {
 			url: url,
 			dataType: 'json',
 			success: function(data){
-				console.log("success", data)
 				this.setCurrentDish(data)
 				this.setPending(data)
 				//this.notifyObservers(["getDish", data])
 				//return data.Results
 			}.bind(this), //to get the right context
 			error: function(xhr, status, error){
-				console.error("gick dåligt!");
-			}
+				console.error("error calling getDish");
+				this.notifyObservers(["getDish", "error"])
+			}.bind(this)
 		})
 	}
 

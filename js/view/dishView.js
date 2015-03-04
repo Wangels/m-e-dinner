@@ -6,15 +6,26 @@ var DishView = function (container, model, mainController){
 	var dishText = this.dishText = container.find("#dishText");
 	var ingredientView = this.ingredientView = container.find("#ingredientView");
 
-	var load = function(){
+	var load = function(updateMsg){
 
 		var dish = model.getCurrentDish()
 
-		if(dish){
+		if(updateMsg === "error"){
 
-			console.log("Showing dish")
+			errorString = "<p>There was an error when loading the dish</p><button type='button' class='btn btn-default' id='dishBack'><span class='glyphicon glyphicon-chevron-left'></span>   back to Select Dish</button>"
+
+			dishText.html(errorString)
+			ingredientView.html("")
+			var dishBackController = new DishBackController(container.find("#dishBack"), mainController)
+
+		}
+		else if(dish){
 			loadDishText(dish)
 			loadIngredientView(dish)
+		}
+		else{
+			dishText.html("Loading")
+			ingredientView.html("Loading")
 		}
 
 	}
@@ -38,7 +49,7 @@ var DishView = function (container, model, mainController){
 
 		for(key in dish.Ingredients){
 			ingredient = dish.Ingredients[key]
-			ingredientText = ingredientText + "<tr><td>" + ingredient.MetricQuantity*guests + " " + ingredient.MetricUnit + "</td><td>" + ingredient.Name + "</td><td>SEK</td><td>" + ingredient.MetricQuantity*guests + "</td></tr>"
+			ingredientText = ingredientText + "<tr><td>" + Math.round(ingredient.MetricQuantity*guests) + " " + ingredient.MetricUnit + "</td><td>" + ingredient.Name + "</td><td>SEK</td><td>" + Math.round(ingredient.MetricQuantity*guests) + "</td></tr>"
 
 		}
 
@@ -62,7 +73,7 @@ var DishView = function (container, model, mainController){
 				dish = undefined //if we've updated current dish to undefined the saved dish is not current anymore
 			}		*/	
 
-			load()
+			load(updateObject[1])
 
 		}
 	}

@@ -1,6 +1,6 @@
 var DinnerOverview = function(container, model, mainController){
 	model.addObserver(this)
-	var observs = ["addDishToMenu", "setNumberOfGuests"]
+	var observs = ["addDishToMenu", "setNumberOfGuests", "removeDishFromMenu"]
 	var dinnerOverview = this.dinnerOverview = container.find("#dinnerOverviewDiv");
 
 	var loadDinnerOverview = function(obj){
@@ -38,7 +38,6 @@ var DinnerOverview = function(container, model, mainController){
 }
 
 var getDishDiv = function(dish, model){
-	console.log("Dishdiv, dish= " + dish.RecipeID)
 	var dishText = "<div class='col-md-2'><div class='dish'>"
 	dishText = dishText + "<img src='" + dish.ImageURL + "'/>"
 	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4>"
@@ -70,7 +69,7 @@ var TopView = function(container, model, mainController){
 
 var DinnerPrepview = function(container, model){
 	model.addObserver(this)
-	var observs = ["addDishToMenu"]
+	var observs = ["addDishToMenu", "removeDishFromMenu"]
 
 	var loadDinnerPrepview = function(obj){
 
@@ -82,6 +81,10 @@ var DinnerPrepview = function(container, model){
 			if(!(menu[dinnerKey] === 0)){
 				dinnerText = dinnerText + getPrepDishDiv(menu[dinnerKey], model)
 			}
+		}
+
+		if(menu.length ==0){
+			dinnerText = "You have no dishes in your menu"
 		}
 
 		container.html(dinnerText)
@@ -98,7 +101,7 @@ var DinnerPrepview = function(container, model){
 
 var getPrepDishDiv = function(dish, model){
 	var dishText = "<div class='row' id='dishPrep'><div class='col-md-6'><div class='dishDescription'>"
-	dishText = dishText + "<img src='" + dish.ImageURL + "'/>"
+	dishText = dishText + "<img class='prepImg' src='" + dish.ImageURL + "'/>"
 	dishText = dishText + "<h4><span>" + dish.Title + "</span></h4></br><p>" + dish.Description + "</p>"
 	dishText = dishText + "</div></div><div class='col-md-6'><h5><span>Preparation<span></h5></br><p>" + dish.Instructions + "</p>"
 	dishText = dishText + "</div></div>"

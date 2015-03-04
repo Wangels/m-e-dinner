@@ -15,9 +15,11 @@ var DishOverview = function(container, model, mainController){
 		//var allDishes = model.getAllDishes(model.getSearchType(), model.getSearchFilter())
 		
 		var imgControllers = []
-		//console.log("id=" + allDishes[0].id)
 
-		if(allDishes){
+		if(allDishes === "error"){
+			dishGrid.html("There was an error when trying to search")
+		}
+		else if(allDishes){
 			for(i=0; i<allDishes.length;i++){
 				dish = allDishes[i]
 
@@ -37,6 +39,10 @@ var DishOverview = function(container, model, mainController){
 				dish = allDishes[i]
 				imgControllers[i] = new DishImageController(dish.RecipeID, mainController)
 			}
+
+			if(allDishes.length == 0){
+				dishGrid.html("No results")
+			}
 		}
 		else{
 			dishGrid.html("loading")
@@ -46,16 +52,14 @@ var DishOverview = function(container, model, mainController){
 	}
 
 	this.update = function(updateObject){
-		//console.log("Updating dishOverview", updateObject[0])
 		if(observs.indexOf(updateObject[0])>-1){
-			console.log("Updating dishOverview")
 			loadDishOverview(updateObject[1])
 		}
 
 	}
 
 	loadDishOverview()
-	model.getAllDishes(model.getSearchType, model.getSearchFilter)
+	model.getAllDishes()
 
 }
 

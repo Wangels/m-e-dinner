@@ -118,10 +118,11 @@ h5{
 
 .dish h4{
 	position: absolute;
-	top: 100px;
+	top: 0px;
 	left:20px;
 	width:140px;
 	font-size: 8pt;
+	line-height:200%;
 
 }
 
@@ -131,6 +132,7 @@ h5{
 	background: rgba(0,0,0,0.7);
 	padding:5px;
 	width:140px;
+
 }
 
 #ingredientView{
@@ -203,6 +205,10 @@ h5{
 	margin-bottom:10px;
 	margin-top:10px;
 	padding:20px;
+}
+
+.prepImg{
+	width:40%;
 }
 #bigContainer{
 	min-height:100%;
