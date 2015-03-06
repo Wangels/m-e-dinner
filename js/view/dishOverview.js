@@ -6,6 +6,7 @@ var DishOverview = function(container, model, mainController){
 
 	var dishGrid = this.dishGrid = container.find("#dishGrid");
 
+
 	var loadDishOverview = function(allDishes){
 
 		var gridString = ""
@@ -65,6 +66,7 @@ var DishOverview = function(container, model, mainController){
 
 var SearchView = function(container, model, mainController){
 	var searchButton = this.searchButton = container.find("#searchButton")
+	var searchText = this.searchText = container.find("#searchText")
 	var allFilter = this.allFilter = container.find("#all")
 	var starterFilter = this.starterFilter = container.find("#starter")
 	var mainFilter = this.mainFilter = container.find("#main")

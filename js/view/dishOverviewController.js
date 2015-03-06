@@ -15,9 +15,17 @@ var DishImageController = function(id, mainController){
 
 var SearchController = function(view, model, mainController){
 
-	view.searchButton.click(function(){
+	/*view.searchButton.click(function(){
 		var searchText = $("#searchText").val()
 
+		model.setSearchFilter(searchText)
+		model.getAllDishes()
+
+	})*/
+
+	view.searchText.change(function(){
+		var searchText = $("#searchText").val()
+		
 		model.setSearchFilter(searchText)
 		model.getAllDishes()
 
